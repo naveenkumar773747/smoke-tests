@@ -17,7 +17,7 @@
 							"let testVarStr = pm.collectionVariables.get(\"feeTypeInfoMappingVar\");\r",
 							"const feeTypeInfoDB = JSON.parse(testVarStr).codes;\r",
 							"\r",
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200-example two\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
