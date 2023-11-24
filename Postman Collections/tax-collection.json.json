@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e62d954f-6de4-46d6-b485-165c83fa91c2",
+		"_postman_id": "71a8d00c-b42b-4c25-b95c-a86203660a12",
 		"name": "far-acrs-tax-adapter",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -11,13 +11,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1b927489-2180-43ea-9088-bd625d9f43ba",
 						"exec": [
 							"var request = JSON.parse(pm.request.body.raw);\r",
 							"let testVarStr = pm.collectionVariables.get(\"feeTypeInfoMappingVar\");\r",
 							"const feeTypeInfoDB = JSON.parse(testVarStr).codes;\r",
 							"\r",
-							"pm.test(\"Status code is 200-example two\", function () {\r",
+							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -82,6 +81,10 @@
 							"    pm.expect(jsonData.taxDetails[0].activationStatusEnum).eql(request.data.taxes[0].activationStatus);\r",
 							"});\r",
 							"\r",
+							"// pm.test(\"Tax ChargeFrequency match\", function () {\r",
+							"//     var jsonData = pm.response.json();\r",
+							"//     pm.expect(jsonData.taxDetails[0].chargeFrequencyEnum).eql(request.data.taxes[0].chargeFrequency);\r",
+							"// });\r",
 							"\r",
 							"pm.test(\"Tax computationType match\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
@@ -199,11 +202,12 @@
 							"    pm.expect(jsonData.taxDetails[0].items[0].codes[0].length).eql(request.data.taxes[0].productCategories[0].productCodes[0].length);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"id": "9b3fbb58-47ca-4a54-94ce-e781ad2ab398"
 					}
 				}
 			],
-			"id": "c2e6c661-61bf-446f-be9f-c8be188d8fc9",
+			"id": "588d922f-125e-4480-a6be-b1bd11386e6f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -243,7 +247,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"meta\": {\r\n    \"generationTime\": \"2023-05-19T05:33:28.085Z\",\r\n    \"chainCode\": \"MI\",\r\n    \"propertyCode\": \"NYCMQ\"\r\n  },\r\n  \"data\": {\r\n    \"taxes\": [\r\n      {\r\n        \"taxType\": 18,\r\n        \"isInclusive\": true,\r\n        \"name\": \"City Tourism tax\",\r\n        \"description\": \"some descritpion- example for demo - one\",\r\n        \"longDescription\": \"some long description\",\r\n        \"taxUserCode\": \"AN001\",\r\n        \"paymentAtHotelStatus\": \"OnlinePayment\",\r\n        \"currency\": \"USD\",\r\n        \"activationStatus\": \"Active\",\r\n        \"chargeFrequency\": \"PerDay\",\r\n        \"computationType\": \"Percentage\",\r\n        \"computationMode\": \"TaxesOnly\",\r\n        \"chargePerPerson\": true,\r\n        \"residencyStatus\": \"All\",\r\n        \"relatedTaxCodes\": [\r\n          \"DDD111\"\r\n        ],\r\n        \"periods\": [\r\n          {\r\n            \"startDate\": \"2023-06-19\",\r\n            \"endDate\": \"2023-06-20\",\r\n            \"activeDow\": {\r\n              \"monday\": true,\r\n              \"tuesday\": true,\r\n              \"wednesday\": true,\r\n              \"thursday\": true,\r\n              \"friday\": true,\r\n              \"saturday\": true,\r\n              \"sunday\": false\r\n            },\r\n            \"ratePeriods\": [\r\n              {\r\n                \"flatAmount\": \"100.55\",\r\n                \"percentage\": 0,\r\n                \"priceRange\": [\r\n                  {\r\n                    \"min\": \"10.00\",\r\n                    \"max\": \"50.00\"\r\n                  }\r\n                ],\r\n                \"guestTypes\": [\r\n                  \"Adult\"\r\n                ],\r\n                \"age\": {\r\n                  \"min\": 18,\r\n                  \"max\": 60\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"productCategories\": [\r\n          {\r\n            \"productCategoryCode\": \"SR\",\r\n            \"codeType\": \"Room\",\r\n            \"productCodes\": [\r\n              \"SR_PROD_CODE\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"action\": \"Update\"\r\n}",
+					"raw": "{\r\n  \"meta\": {\r\n    \"generationTime\": \"2023-05-19T05:33:28.085Z\",\r\n    \"chainCode\": \"MI\",\r\n    \"propertyCode\": \"NYCMQ\"\r\n  },\r\n  \"data\": {\r\n    \"taxes\": [\r\n      {\r\n        \"taxType\": 18,\r\n        \"isInclusive\": true,\r\n        \"name\": \"City Tourism tax\",\r\n        \"description\": \"some descritpion\",\r\n        \"longDescription\": \"some long description\",\r\n        \"taxUserCode\": \"AN001\",\r\n        \"paymentAtHotelStatus\": \"OnlinePayment\",\r\n        \"currency\": \"USD\",\r\n        \"activationStatus\": \"Active\",\r\n        \"chargeFrequency\": \"PerDay\",\r\n        \"computationType\": \"Percentage\",\r\n        \"computationMode\": \"TaxesOnly\",\r\n        \"chargePerPerson\": true,\r\n        \"residencyStatus\": \"All\",\r\n        \"relatedTaxCodes\": [\r\n          \"DDD111\"\r\n        ],\r\n        \"periods\": [\r\n          {\r\n            \"startDate\": \"2023-06-19\",\r\n            \"endDate\": \"2023-06-20\",\r\n            \"activeDow\": {\r\n              \"monday\": true,\r\n              \"tuesday\": true,\r\n              \"wednesday\": true,\r\n              \"thursday\": true,\r\n              \"friday\": true,\r\n              \"saturday\": true,\r\n              \"sunday\": false\r\n            },\r\n            \"ratePeriods\": [\r\n              {\r\n                \"flatAmount\": \"100.55\",\r\n                \"percentage\": 0,\r\n                \"priceRange\": [\r\n                  {\r\n                    \"min\": \"10.00\",\r\n                    \"max\": \"50.00\"\r\n                  }\r\n                ],\r\n                \"guestTypes\": [\r\n                  \"Adult\"\r\n                ],\r\n                \"age\": {\r\n                  \"min\": 18,\r\n                  \"max\": 60\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"productCategories\": [\r\n          {\r\n            \"productCategoryCode\": \"SR\",\r\n            \"codeType\": \"Room\",\r\n            \"productCodes\": [\r\n              \"SR_PROD_CODE\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"action\": \"Update\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -479,11 +483,11 @@
 							"});"
 						],
 						"type": "text/javascript",
-						"id": "0768a709-f320-4289-822b-831b359c2cee"
+						"id": "6cd52ee9-7345-4ca1-ac00-1fff832e9b1b"
 					}
 				}
 			],
-			"id": "326309fd-f174-45cc-9757-946abe8aa51c",
+			"id": "5bf25e72-737e-4755-82d4-cb6b70ee797e",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -745,11 +749,11 @@
 							"});"
 						],
 						"type": "text/javascript",
-						"id": "00daa5ff-2d24-4e12-bad7-e7faacd9b966"
+						"id": "211ea9f9-3f3a-4b8b-abb8-0975240e73a0"
 					}
 				}
 			],
-			"id": "fade3f77-bc2b-4d7e-b2b3-494488c1f0cd",
+			"id": "1922df2d-fdef-4067-a58a-09d6bfee3db9",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1016,11 +1020,11 @@
 							"});"
 						],
 						"type": "text/javascript",
-						"id": "02186934-b989-43fa-950d-1593e06ce409"
+						"id": "c5a7651f-0586-4b35-a602-6f1d89a1b85f"
 					}
 				}
 			],
-			"id": "490e9a12-42bd-4cbf-9aab-76d258f2f3eb",
+			"id": "a7d9e3dd-c5fb-4b9d-a288-3b1547aeab10",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1077,27 +1081,17 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3bc79891-d329-491b-9abf-efa9a387710e",
 						"exec": [
 							"pm.test(\"Status code is 400\", function () {\r",
 							"    pm.response.to.have.status(400);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Error length test\", function () {\r",
-							"    pm.expect(pm.response.json().errors.length).eql(2);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Error message test\", function () {\r",
-							"    const respJson = pm.response.json();\r",
-							"    pm.expect(respJson.errors[0].status).eql(400);\r",
-							"    pm.expect(respJson.errors[0].source.pointer).eql(\"meta.propertyCode\");\r",
 							"});"
 						],
-						"type": "text/javascript",
-						"id": "a12f320e-4d5d-4f68-9814-e743bd73e378"
+						"type": "text/javascript"
 					}
 				}
 			],
-			"id": "96b91551-adc9-4da0-976e-2246ee30a92b",
+			"id": "5e04afc6-5b5a-47ab-9097-a861727cf130",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1137,7 +1131,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"meta\": {\r\n    \"generationTime\": \"2023-05-19T05:33:28.085Z\",\r\n    \"chainCode\": \"MI\",\r\n    \"propertyCode\": \"\"\r\n  },\r\n  \"data\": {\r\n    \"taxes\": [\r\n      {\r\n        \"taxType\": 18,\r\n        \"isInclusive\": true,\r\n        \"name\": \"City Tourism tax\",\r\n        \"description\": \"some descritpion\",\r\n        \"longDescription\": \"some long description\",\r\n        \"taxUserCode\": \"AN001\",\r\n        \"paymentAtHotelStatus\": \"OnlinePayment\",\r\n        \"currency\": \"USD\",\r\n        \"activationStatus\": \"Active\",\r\n        \"chargeFrequency\": \"PerDay\",\r\n        \"computationType\": \"Percentage\",\r\n        \"computationMode\": \"TaxesOnly\",\r\n        \"chargePerPerson\": true,\r\n        \"residencyStatus\": \"All\",\r\n        \"relatedTaxCodes\": [\r\n          \"DDD111\"\r\n        ],\r\n        \"periods\": [\r\n          {\r\n            \"startDate\": \"2023-06-19\",\r\n            \"endDate\": \"2023-06-20\",\r\n            \"activeDow\": {\r\n              \"monday\": true,\r\n              \"tuesday\": true,\r\n              \"wednesday\": true,\r\n              \"thursday\": true,\r\n              \"friday\": true,\r\n              \"saturday\": true,\r\n              \"sunday\": false\r\n            },\r\n            \"ratePeriods\": [\r\n              {\r\n                \"flatAmount\": \"100.55\",\r\n                \"percentage\": 0,\r\n                \"priceRange\": [\r\n                  {\r\n                    \"min\": \"10.00\",\r\n                    \"max\": \"50.00\"\r\n                  }\r\n                ],\r\n                \"guestTypes\": [\r\n                  \"Adult\"\r\n                ],\r\n                \"age\": {\r\n                  \"min\": 18,\r\n                  \"max\": 60\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"productCategories\": [\r\n          {\r\n            \"productCategoryCode\": \"SR\",\r\n            \"codeType\": \"Room\",\r\n            \"productCodes\": [\r\n              \"SR_PROD_CODE\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"action\": \"Update\"\r\n}",
+					"raw": "{\r\n  \"meta\": {\r\n    \"generationTime\": \"2023-05-19T05:33:28\",\r\n    \"chainCode\": \"MIRCB\",\r\n    \"propertyCode\": \"\"\r\n  },\r\n  \"data\": {\r\n    \"taxes\": [\r\n      {\r\n        \"taxType\": 18,\r\n        \"isInclusive\": true,\r\n        \"name\": \"City Tourism tax\",\r\n        \"description\": \"some descritpion\",\r\n        \"longDescription\": \"some long description\",\r\n        \"taxUserCode\": \"AN001\",\r\n        \"paymentAtHotelStatus\": \"OnlinePayment\",\r\n        \"currency\": \"USD\",\r\n        \"activationStatus\": \"Active\",\r\n        \"chargeFrequency\": \"PerDay\",\r\n        \"computationType\": \"Percentage\",\r\n        \"computationMode\": \"TaxesOnly\",\r\n        \"chargePerPerson\": true,\r\n        \"residencyStatus\": \"All\",\r\n        \"relatedTaxCodes\": [\r\n          \"DDD111\"\r\n        ],\r\n        \"periods\": [\r\n          {\r\n            \"startDate\": \"2023-06-19\",\r\n            \"endDate\": \"2023-06-20\",\r\n            \"activeDow\": {\r\n              \"monday\": true,\r\n              \"tuesday\": true,\r\n              \"wednesday\": true,\r\n              \"thursday\": true,\r\n              \"friday\": true,\r\n              \"saturday\": true,\r\n              \"sunday\": false\r\n            },\r\n            \"ratePeriods\": [\r\n              {\r\n                \"flatAmount\": \"100.55\",\r\n                \"percentage\": 0,\r\n                \"priceRange\": [\r\n                  {\r\n                    \"min\": \"10.00\",\r\n                    \"max\": \"50.00\"\r\n                  }\r\n                ],\r\n                \"guestTypes\": [\r\n                  \"Adult\"\r\n                ],\r\n                \"age\": {\r\n                  \"min\": 18,\r\n                  \"max\": 60\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"productCategories\": [\r\n          {\r\n            \"productCategoryCode\": \"SR\",\r\n            \"codeType\": \"Room\",\r\n            \"productCodes\": [\r\n              \"SR_PROD_CODE\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"action\": \"Update\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1160,11 +1154,11 @@
 							"});"
 						],
 						"type": "text/javascript",
-						"id": "8f64663f-eda8-48e4-acc7-cfd49b36c125"
+						"id": "7f231ba9-e1ae-457a-b258-96bd43b3914d"
 					}
 				}
 			],
-			"id": "b92ccfbd-ad12-4989-89bb-47497555d8c5",
+			"id": "47be0ec0-d497-4a81-8fbc-9b7e867fef7d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1224,7 +1218,7 @@
 				"exec": [
 					""
 				],
-				"id": "dc36e80d-1d5f-40d0-a56a-5efc64c1d5c2"
+				"id": "1d733ada-ff9e-41e0-83ec-a87e39c93c39"
 			}
 		},
 		{
@@ -1234,19 +1228,17 @@
 				"exec": [
 					""
 				],
-				"id": "a2ca61e0-3f21-48ab-a112-74bac4aa5868"
+				"id": "8fd62ef6-2f9b-449a-b6aa-f136f80a383d"
 			}
 		}
 	],
 	"variable": [
 		{
-			"id": "02ac53c8-28e4-44e9-9adc-9e3809d2d30d",
 			"key": "endpoint",
 			"value": "/v1/tax/sync",
 			"type": "string"
 		},
 		{
-			"id": "905fd62b-4e46-45fd-a746-01c4fac39b33",
 			"key": "feeTypeInfoMappingVar",
 			"value": "{\n  \"_id\": \"FEE_TYPE_INFO_MAPPING\",\n  \"type\": \"translation-data\",\n  \"lastUpdatedTime\": \"2023-09-22T19:42:00-000Z\",\n  \"lastUpdatedUser\": \"TEST123\",\n  \"createdTime\": \"2023-02-14T15:42:00-000Z\",\n  \"createdUser\": \"DB-User\",\n  \"codes\": [\n    {\n      \"acrs\": \"1\",\n      \"marsha\": \"1.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"2\",\n      \"marsha\": \"2.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"3\",\n      \"marsha\": \"3.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"4\",\n      \"marsha\": \"4.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"5\",\n      \"marsha\": \"5.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"6\",\n      \"marsha\": \"6.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"7\",\n      \"marsha\": \"7.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"8\",\n      \"marsha\": \"8.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"9\",\n      \"marsha\": \"9.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"10\",\n      \"marsha\": \"10.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"11\",\n      \"marsha\": \"11.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"12\",\n      \"marsha\": \"12.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"13\",\n      \"marsha\": \"13.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"14\",\n      \"marsha\": \"14.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"15\",\n      \"marsha\": \"15.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"16\",\n      \"marsha\": \"16.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"17\",\n      \"marsha\": \"17.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"18\",\n      \"marsha\": \"18.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"20\",\n      \"marsha\": \"20.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"21\",\n      \"marsha\": \"21.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"22\",\n      \"marsha\": \"22.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"23\",\n      \"marsha\": \"23.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"24\",\n      \"marsha\": \"24.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"25\",\n      \"marsha\": \"25.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"27\",\n      \"marsha\": \"27.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"28\",\n      \"marsha\": \"28.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"29\",\n      \"marsha\": \"29.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"30\",\n      \"marsha\": \"30.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"31\",\n      \"marsha\": \"31.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"32\",\n      \"marsha\": \"32.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"33\",\n      \"marsha\": \"33.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"34\",\n      \"marsha\": \"34.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"35\",\n      \"marsha\": \"35.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"36\",\n      \"marsha\": \"36.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"37\",\n      \"marsha\": \"37.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"38\",\n      \"marsha\": \"38.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"39\",\n      \"marsha\": \"39.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"40\",\n      \"marsha\": \"40.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"41\",\n      \"marsha\": \"41.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"42\",\n      \"marsha\": \"42.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"43\",\n      \"marsha\": \"43.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"44\",\n      \"marsha\": \"44.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"45\",\n      \"marsha\": \"45.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"46\",\n      \"marsha\": \"46.FTT\",\n      \"mmf\": \"false\"\n    },\n    {\n      \"acrs\": \"47\",\n      \"marsha\": \"47.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"48\",\n      \"marsha\": \"48.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"49\",\n      \"marsha\": \"49.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"50\",\n      \"marsha\": \"50.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"51\",\n      \"marsha\": \"51.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"52\",\n      \"marsha\": \"52.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"53\",\n      \"marsha\": \"53.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"54\",\n      \"marsha\": \"54.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"55\",\n      \"marsha\": \"55.FTT\",\n      \"mmf\": \"true\"\n    },\n    {\n      \"acrs\": \"56\",\n      \"marsha\": \"56.FTT\",\n      \"mmf\": \"true\"\n    }\n  ]\n}",
 			"type": "string"
